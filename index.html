@@ -41,45 +41,36 @@
       var wrapper = document.getElementById('root');
       if (!cartel || !wrapper) return;
 
-      // clientWidth is more reliable than innerWidth in mobile Safari
       var winW = document.documentElement.clientWidth || window.innerWidth;
       var naturalW = 1100;
 
-      // Full reset — clear any previous state
+      // 1. Reset scale so fit() measures natural dimensions
       cartel.style.transform = 'none';
       cartel.style.transformOrigin = '';
-      cartel.style.marginLeft = '';
       wrapper.style.height = '';
       wrapper.style.overflow = '';
       wrapper.style.alignItems = '';
+      wrapper.style.padding = '32px 16px';
 
+      // 2. fit() runs on unscaled cartel — correct measurements
+      fit();
+
+      // 3. Now apply scale if needed
       if (winW < naturalW) {
         var scale = winW / naturalW;
-        // Measure height with no transform active
         var naturalH = cartel.offsetHeight;
-
-        // Disable flex centering so cartel sits flush at left:0
         wrapper.style.alignItems = 'flex-start';
         wrapper.style.padding = '0';
         wrapper.style.overflow = 'hidden';
-
-        // Scale from top-left corner — simple, no negative-margin math
+        wrapper.style.height = (naturalH * scale) + 'px';
         cartel.style.transformOrigin = 'top left';
         cartel.style.transform = 'scale(' + scale + ')';
-
-        // Collapse wrapper height to match visual (transform doesn't affect layout)
-        wrapper.style.height = (naturalH * scale) + 'px';
-      } else {
-        wrapper.style.padding = '32px 16px';
       }
     }
 
-    function runAll() { fit(); scaleCartel(); }
-
-    // Run after fonts AND after full page load (image included)
-    document.fonts.ready.then(runAll);
-    window.addEventListener('load', runAll);
-    window.addEventListener('resize', runAll);
+    document.fonts.ready.then(scaleCartel);
+    window.addEventListener('load', scaleCartel);
+    window.addEventListener('resize', scaleCartel);
   </script>
 </body>
 </html>
