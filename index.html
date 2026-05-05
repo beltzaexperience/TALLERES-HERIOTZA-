@@ -40,43 +40,46 @@
       var cartel = document.getElementById('cartel');
       var wrapper = document.getElementById('root');
       if (!cartel || !wrapper) return;
-      var winW = window.innerWidth;
+
+      // clientWidth is more reliable than innerWidth in mobile Safari
+      var winW = document.documentElement.clientWidth || window.innerWidth;
       var naturalW = 1100;
 
-      // Reset first to measure natural height
-      cartel.style.transform = '';
+      // Full reset — clear any previous state
+      cartel.style.transform = 'none';
       cartel.style.transformOrigin = '';
       cartel.style.marginLeft = '';
       wrapper.style.height = '';
       wrapper.style.overflow = '';
+      wrapper.style.alignItems = '';
 
       if (winW < naturalW) {
         var scale = winW / naturalW;
+        // Measure height with no transform active
         var naturalH = cartel.offsetHeight;
-        // marginLeft centers the 1100px element: its midpoint lands at viewport center.
-        // transformOrigin 'top center' then scales from that same midpoint.
-        // Both lines are required — removing either one breaks centering.
-        cartel.style.marginLeft = ((winW - naturalW) / 2) + 'px';
-        cartel.style.transformOrigin = 'top center';
-        cartel.style.transform = 'scale(' + scale + ')';
-        // CSS transform doesn't shrink layout height — force the wrapper to match
-        wrapper.style.height = (naturalH * scale) + 'px';
-        wrapper.style.overflow = 'hidden';
+
+        // Disable flex centering so cartel sits flush at left:0
+        wrapper.style.alignItems = 'flex-start';
         wrapper.style.padding = '0';
+        wrapper.style.overflow = 'hidden';
+
+        // Scale from top-left corner — simple, no negative-margin math
+        cartel.style.transformOrigin = 'top left';
+        cartel.style.transform = 'scale(' + scale + ')';
+
+        // Collapse wrapper height to match visual (transform doesn't affect layout)
+        wrapper.style.height = (naturalH * scale) + 'px';
       } else {
-        cartel.style.transform = '';
-        cartel.style.transformOrigin = '';
-        cartel.style.marginLeft = '';
         wrapper.style.padding = '32px 16px';
       }
     }
 
-    document.fonts.ready.then(function() {
-      fit();
-      scaleCartel();
-      setTimeout(function(){ fit(); scaleCartel(); }, 400);
-    });
-    window.addEventListener('resize', function(){ fit(); scaleCartel(); });
+    function runAll() { fit(); scaleCartel(); }
+
+    // Run after fonts AND after full page load (image included)
+    document.fonts.ready.then(runAll);
+    window.addEventListener('load', runAll);
+    window.addEventListener('resize', runAll);
   </script>
 </body>
 </html>
