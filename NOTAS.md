@@ -1,16 +1,18 @@
-# 13 EVENTOS · EJERCICIOS BELTZA — NOTAS DE PROYECTO
+# 13 RITUALES · EJERCICIOS BELTZA — NOTAS DE PROYECTO
 
 ## Repositorio
 ```
-https://github.com/beltzaexperience/13-EVENTOS
-https://beltzaexperience.github.io/13-EVENTOS/
+https://github.com/beltzaexperience/13-RITUALES
+https://beltzaexperience.github.io/13-RITUALES/
 ```
 
 ## Estructura de archivos
 ```
-13-EVENTOS/
-├── index.html                     ← homepage 13 Eventos
-├── beltza-puno.png                ← logo puño Beltza (raw GitHub)
+13-RITUALES/
+├── index.html                     ← homepage 13 Rituales
+├── style.css                      ← estilos separados (pluma Apache)
+├── logo13.png                     ← logo 13 extraído del Manifiesto
+├── beltza-puno.png                ← logo puño Beltza
 ├── rastros-jupiter-05-26.html     ← cartel Rastros de Júpiter Mayo 2026
 └── (futuros carteles .html)
 ```
@@ -21,7 +23,7 @@ https://beltzaexperience.github.io/13-EVENTOS/
 | Manifiesto | beltzaexperience.github.io/Manifiesto-Beltza/ | Manifiesto-Beltza |
 | UR-SAPIENS | beltzaexperience.github.io/UR-SAPIENS/ | UR-SAPIENS |
 | Magic Bus | beltzaexperience.github.io/magic-bus/ | magic-bus |
-| 13 Eventos | beltzaexperience.github.io/13-EVENTOS/ | 13-EVENTOS |
+| 13 Rituales | beltzaexperience.github.io/13-RITUALES/ | 13-RITUALES |
 | DUB²BEAT | dubbeat.beltzarecords.com | DUB2BEAT-PHOTOGRAPHY |
 | beltzarecords.com | www.beltzarecords.com | (servidor Karlos) |
 
@@ -36,14 +38,14 @@ https://beltzaexperience.github.io/13-EVENTOS/
 --red:    #b01a1a   /* rojo sangre */
 --amber:  #c8922a   /* ámbar links */
 --muted:  #666      /* texto secundario */
---cream:  #f0e8d8   /* fondo citas/intro */
 ```
-Color especial intro: `#82C8E5` (azul cielo)
+Color intro: `#82C8E5` (azul cielo)
+Color cartel Rastros: `#142240` (azul marino) · fondo web cartel: `#0F4336` (verde musgo)
 
 ### Tipografías (Google Fonts)
 - **Bebas Neue** — títulos, brand slash, topband, labels
 - **Courier Prime** — cuerpo de texto, captions
-- **Playfair Display** — títulos hero, citas literarias
+- **Playfair Display** — títulos hero
 
 ---
 
@@ -55,61 +57,62 @@ BELTZARECORDS.COM · DONOSTIA _ DONEZTEBE  |  MANIFIESTO · MAGIC BUS · DUB²BE
 ```
 - Font: Bebas Neue `clamp(1.07rem,2.25vw,1.47rem)` · letter-spacing: 0.15em
 - Padding: `1.1rem clamp(1rem,4vw,3rem)`
-- Links en ámbar, `²` de DUB en rojo
-- `flex-wrap: wrap` — en móvil fluye solo
+- Links en ámbar · `²` de DUB en rojo · `flex-wrap:wrap`
 
 ### 2. BRAND SLASH (fondo rojo)
 ```
-[logo 13]  EVENTOS  +  EJERCICIOS  BELTZA  [puño-logo]
+[logo13.png]  &nbsp;&nbsp;  RITUALES  &nbsp;&nbsp;  +  &nbsp;&nbsp;  EJERCICIOS  &nbsp;&nbsp;  BELTZA  &nbsp;&nbsp;  [beltza-puno.png]
 ```
-- Logo 13: base64 extraído del Manifiesto · `clamp(3.2rem,9vw,8rem)`
-- EVENTOS / EJERCICIOS: `.b-eventos` — Bebas Neue, caja negra, texto rojo
-- `+`: blanco, `clamp(5rem,14vw,12rem)`
-- BELTZA: sin caja, negro, `clamp(2.8rem,7.8vw,6.5rem)`
-- Puño logo: `https://raw.githubusercontent.com/beltzaexperience/13-EVENTOS/main/beltza-puno.png`
-- Todos centrados con `justify-content:center` y `&nbsp;&nbsp;` entre elementos
+- Separadores: `&nbsp;&nbsp;` entre cada elemento
+- Logo 13: `logo13.png` · `clamp(3.2rem,9vw,8rem)`
+- RITUALES / EJERCICIOS: `.b-eventos` — Bebas Neue caja negra texto rojo
+- `+`: blanco · `clamp(5rem,14vw,12rem)`
+- BELTZA: sin caja · negro · `clamp(2.8rem,7.8vw,6.5rem)`
+- Puño: `beltza-puno.png` desde repo
+- Todo centrado: `justify-content:center`
 
 ### 3. MARQUEE TOP (fondo negro)
-- Texto blanco · `clamp(1.07rem,2.25vw,1.47rem)` · mismo padding que topband
-- Contenido: BROCANTE · MÚSICA · CINE · TAROT · DISCOS · etc.
+- Texto blanco · mismo tamaño topband · mismo padding
+- Contenido: 13 RITUALES · EJERCICIOS BELTZA · BROCANTE · MÚSICA...
 
 ### 4. HERO (foto completa sin recorte)
-- Foto: `https://live.staticflickr.com/65535/55250584412_e982256c3d_h.jpg`
-  (Ultramarinos Parroquia 13, letrero verde, mesa brocante)
-- **Texto arriba** en rojo negrita — `.hero-eyebrow-top`:
-  ```
-  Ultramarinos Parroquia 13
-  Doneztebe · Nafarroa
-  Azken Muga of Soul
-  ```
-- **Texto abajo** en blanco — `.hero-title` (Playfair itálica):
-  ```
-  Rituales de CultURa Popular.
-  Ejercicios del Espíritu Beltza.
-  ```
+- Foto: Ultramarinos Parroquia 13 fachada + letrero verde
+- **Texto arriba** `.hero-eyebrow-top` — rojo negrita:
+  `Doneztebe · Nafarroa / Azken Muga of Soul`
+- **Texto abajo** `.hero-title` — Playfair itálica blanca:
+  `Rituales de CultURa Popular. / Ejercicios del Espíritu Beltza.`
   (UR en rojo)
 
 ### 5. INTRO (fondo azul #82C8E5)
-- Label rojo: `Ejercicios Espirituales de Cultura Popular · Doneztebe · Nafarroa`
+- Label rojo: `Ejercicios Espirituales de Cult ur a Popular · Doneztebe · Nafarroa`
 - Cuerpo: texto Vudú-Beat, Xabatenea Etxea, Ritualismo POP, Smart Dress Style
-- Sin columna izquierda, texto a ancho completo
+- Ancho completo, sin columna lateral
 
 ### 6. PHOTO MARQUEE
+- Clase: `.foto-marquee-wrap` / `.foto-marquee-track`
+- Velocidad: 60s (lento)
 - Franjas rojas 7px arriba y abajo
-- Fotos: `clamp(180px,26vw,320px)` de alto
-- `line-height:0` para eliminar línea negra inferior
-- Pausable al clicar
+- Arranca solo tras `window.load` (espera a que carguen las fotos)
+- Sin pausa por click (conflictos resueltos eliminando toggle)
+- 18 fotos únicas mezcladas en random, duplicadas para loop suave
 
-### 7. EVENTS GRID
-- Grid `auto-fill minmax(280px,1fr)` con gap 3px
-- Cada tarjeta: `aspect-ratio: 2/3`, foto con overlay oscuro
-- Hover: escala + oscurece
-- Campos: fecha, título, subtítulo, link "Ver cartel →"
+### 7. EVENTS GRID (masonry)
+- `columns: 3` · 2 en tablet · 1 en móvil
+- Cada tarjeta: borde rojo 2px · padding 4px interior
+- Pie de foto fondo `#142240` (azul cartel)
+- Título: Bebas blanco · `flex:1` · `text-overflow:ellipsis`
+- Link: **Ver →** en ámbar · `flex-shrink:0`
+- Contador dinámico `001` — suma automáticamente con cada cartel añadido
 
-### 8. FOOTER (clon de topband)
+### 8. MARQUEE BOTTOM
+- Mismo estilo que marquee top
+- Línea roja 4px encima
+- Velocidad: 55s
+
+### 9. FOOTER (clon de topband)
 - Misma estructura y tamaño que topband
-- Coords en blanco: `clamp(0.95rem,1.6vw,1.2rem)`
-  `43°07'55"N · 2°01'05"O · Xabatenea Etxea (1538) · C/ Parroquia 13, Doneztebe, Nafarroa`
+- Línea roja 4px encima
+- Coords: `clamp(0.95rem,1.6vw,1.2rem)` en blanco
 
 ---
 
@@ -117,20 +120,18 @@ BELTZARECORDS.COM · DONOSTIA _ DONEZTEBE  |  MANIFIESTO · MAGIC BUS · DUB²BE
 
 | Clase | Uso |
 |---|---|
-| `.topband` | Barra superior navegación |
+| `.topband` | Barra superior/inferior navegación |
 | `.brand-slash` | Título principal rojo |
 | `.b-eventos` | Bebas caja negra texto rojo |
 | `.marquee-bar / .marquee-inner` | Marquee texto |
 | `.hero` | Foto completa sin recorte |
-| `.hero-eyebrow-top` | Texto rojo arriba de la foto |
+| `.hero-eyebrow-top` | Texto rojo arriba foto |
 | `.hero-title` | Título Playfair abajo foto |
 | `.intro` | Sección azul con texto |
-| `.intro-label` | Etiqueta roja intro |
-| `.intro-body` | Cuerpo texto intro |
-| `.photo-marquee` | Marquee de fotos |
-| `.events-section` | Sección grid de carteles |
-| `.event-card` | Tarjeta de cada evento |
-| `.event-card-body` | Contenido inferior tarjeta |
+| `.foto-marquee-wrap / .foto-marquee-track` | Marquee de fotos |
+| `.events-section` | Sección grid masonry |
+| `.event-card` | Tarjeta cartel |
+| `.event-card-body` | Pie azul de tarjeta |
 | `.footer` | Footer clon topband |
 | `.footer-coords` | Coordenadas GPS blancas |
 
@@ -148,41 +149,50 @@ Ejemplo: `rastros-jupiter-05-26.html`
 | `rastros-jupiter-05-26.html` | 4º Aniversario Los Rastros de Júpiter | 30 Mayo 2026 |
 
 ### Añadir nuevo cartel
-1. Subir el `.html` del cartel al repo 13-EVENTOS con la convención de nombres
-2. Añadir tarjeta en el `.events-grid` del `index.html`
-3. Actualizar el link en el Magic Bus si tiene post
+1. Subir `.html` al repo 13-RITUALES con la convención de nombres
+2. Añadir tarjeta en `.events-grid` del `index.html`
+3. El contador `001` sube automáticamente
+4. Actualizar link en Magic Bus si tiene post
 
 ---
 
-## Mobile — Notas
-- Topband: `flex-wrap:wrap` — fluye en varias líneas, mismo tamaño que desktop
-- Brand slash: `flex-wrap:wrap` en móvil desde 700px
-- Events grid: 2 columnas en móvil, 1 en muy pequeño (420px)
-- Hero: foto completa sin recorte, texto arriba y abajo posicionado absolute
+## Cartel rastros-jupiter-05-26.html
+- Fondo web: `#0F4336` (verde musgo) — inline en `<style>` del `<head>`
+- Sin `link` a `style.css` externo — todo inline
+- `image.jpg` carga desde el mismo repo 13-RITUALES
+- Viewport `width=1100` + `scaleCartel()` para móvil
 
 ---
 
-## Magic Bus — Post Rastros de Júpiter
-- Sección: `data-secciones="musica eventos euskal-herria"`
-- ID: `rastros-4-aniversario`
-- Link cartel: `https://beltzaexperience.github.io/13-EVENTOS/rastros-jupiter-05-26.html`
-- Comentario firmado: **CLAUDIUS · Siglo I d.C. · Vía Láctea, Brazo de Orión**
-- Número: Magic Bus Nº2 · Secundus
+## Mobile
+- Topband: `flex-wrap:wrap` — fluye en varias líneas
+- Brand slash: `flex-wrap:wrap` desde 700px
+- Events grid: 2 col móvil · 1 col en 420px
+- Hero: foto completa, texto posicionado absolute
+
+---
+
+## GitHub — Seguridad
+- Solo tú puedes modificar/borrar (con tu cuenta)
+- Código visible en público — normal, no es riesgo
+- Para repos privados con Pages → GitHub Pro ~4€/mes
+
+## CNAME — URL personalizada
+1. Archivo `CNAME` en raíz del repo: `rituales.beltzarecords.com`
+2. Karlos: registro DNS CNAME `rituales` → `beltzaexperience.github.io`
+3. GitHub Settings → Pages → Custom domain
 
 ---
 
 ## Fonema UR — Identidad Visual Beltza
-El fonema **UR** aparece en rojo `#b01a1a` en todo el texto visible. Es una marca de identidad del universo Beltza — presente en todas las webs del ecosistema (Manifiesto, Magic Bus, UR-SAPIENS).
-
-### Implementación
+El fonema **UR** aparece en rojo `#b01a1a` en todo el texto visible.
 ```html
 Cult<span style="color:#b01a1a;">ur</span>a
 CULT<span style="color:#b01a1a;">UR</span>ALES
 ```
 
-### Aplicar en textos nuevos
-Buscar manualmente: cultura, cultural, culturales, natural, espiritual, Doneztebe (no tiene UR), ritual (no tiene UR), Ultramarinos (ULTR**A**M**AR**INOS — no aplica), UR-SAPIENS (ya tiene UR destacado).
-
-### Palabras con UR en el proyecto
-- CULT**UR**A / CULT**UR**ALES — marquee, intro, hero
-- Espirit**u**ales — intro label (u en rojo)
+## Magic Bus — Post Rastros de Júpiter
+- ID: `rastros-4-aniversario`
+- Link cartel: `https://beltzaexperience.github.io/13-RITUALES/rastros-jupiter-05-26.html`
+- Comentario: **CLAUDIUS · Siglo I d.C. · Vía Láctea, Brazo de Orión**
+- Número: Magic Bus Nº2 · Secundus
