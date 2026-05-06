@@ -1,118 +1,188 @@
-# LOS RASTROS DE JÚPITER — NOTAS DE PROYECTO
+# 13 EVENTOS · EJERCICIOS BELTZA — NOTAS DE PROYECTO
 
-## Estructura del repositorio
+## Repositorio
 ```
-/
-├── index.html       ← Cartel web principal
-├── style.css        ← Estilos base (no cambiar entre carteles)
-└── NOTAS.md         ← Este archivo
+https://github.com/beltzaexperience/13-EVENTOS
+https://beltzaexperience.github.io/13-EVENTOS/
 ```
 
----
+## Estructura de archivos
+```
+13-EVENTOS/
+├── index.html                     ← homepage 13 Eventos
+├── beltza-puno.png                ← logo puño Beltza (raw GitHub)
+├── rastros-jupiter-05-26.html     ← cartel Rastros de Júpiter Mayo 2026
+└── (futuros carteles .html)
+```
 
-## Lienzo
-- **Ancho fijo:** 1100px
-- **Proporción:** ~1:2 (formato 35mm)
-- **Fondo:** `#142240` (panelDark azul)
-- **Paleta activa:** AZUL
-
-| Variable    | Valor     | Uso                          |
-|-------------|-----------|------------------------------|
-| `panelDark` | `#142240` | Fondo principal              |
-| `amber`     | `#d4900a` | Acentos, links, separadores  |
-| `cream`     | `#e8ecf4` | Texto principal              |
-| `red`       | `#b01a1a` | Acento secundario            |
-| `black`     | `#060e1c` | Fondo marquee/footer         |
-
----
-
-## Tipografías
-- **Bebas Neue** — Títulos, nombres de artistas, footer
-- **Barlow Condensed** — Etiquetas (DJ'S, LIVE, fechas)
-
-Ambas vía Google Fonts (ver `<head>` de index.html).
+## Red de proyectos Beltza Experience
+| Proyecto | URL | Repo |
+|---|---|---|
+| Manifiesto | beltzaexperience.github.io/Manifiesto-Beltza/ | Manifiesto-Beltza |
+| UR-SAPIENS | beltzaexperience.github.io/UR-SAPIENS/ | UR-SAPIENS |
+| Magic Bus | beltzaexperience.github.io/magic-bus/ | magic-bus |
+| 13 Eventos | beltzaexperience.github.io/13-EVENTOS/ | 13-EVENTOS |
+| DUB²BEAT | dubbeat.beltzarecords.com | DUB2BEAT-PHOTOGRAPHY |
+| beltzarecords.com | www.beltzarecords.com | (servidor Karlos) |
 
 ---
 
-## Mobile — Solución definitiva (Mayo 2026)
+## Paleta y tipografías
 
-Después de una odisea de un día largo, la solución que funciona:
+### Colores
+```css
+--black:  #0a0a0a   /* fondo principal */
+--white:  #f2ede6   /* texto principal */
+--red:    #b01a1a   /* rojo sangre */
+--amber:  #c8922a   /* ámbar links */
+--muted:  #666      /* texto secundario */
+--cream:  #f0e8d8   /* fondo citas/intro */
+```
+Color especial intro: `#82C8E5` (azul cielo)
 
-**1. Viewport meta tag:**
+### Tipografías (Google Fonts)
+- **Bebas Neue** — títulos, brand slash, topband, labels
+- **Courier Prime** — cuerpo de texto, captions
+- **Playfair Display** — títulos hero, citas literarias
+
+---
+
+## Estructura del index.html
+
+### 1. TOPBAND
+```
+BELTZARECORDS.COM · DONOSTIA _ DONEZTEBE  |  MANIFIESTO · MAGIC BUS · DUB²BEAT · UR-SAPIENS
+```
+- Font: Bebas Neue `clamp(1.07rem,2.25vw,1.47rem)` · letter-spacing: 0.15em
+- Padding: `1.1rem clamp(1rem,4vw,3rem)`
+- Links en ámbar, `²` de DUB en rojo
+- `flex-wrap: wrap` — en móvil fluye solo
+
+### 2. BRAND SLASH (fondo rojo)
+```
+[logo 13]  EVENTOS  +  EJERCICIOS  BELTZA  [puño-logo]
+```
+- Logo 13: base64 extraído del Manifiesto · `clamp(3.2rem,9vw,8rem)`
+- EVENTOS / EJERCICIOS: `.b-eventos` — Bebas Neue, caja negra, texto rojo
+- `+`: blanco, `clamp(5rem,14vw,12rem)`
+- BELTZA: sin caja, negro, `clamp(2.8rem,7.8vw,6.5rem)`
+- Puño logo: `https://raw.githubusercontent.com/beltzaexperience/13-EVENTOS/main/beltza-puno.png`
+- Todos centrados con `justify-content:center` y `&nbsp;&nbsp;` entre elementos
+
+### 3. MARQUEE TOP (fondo negro)
+- Texto blanco · `clamp(1.07rem,2.25vw,1.47rem)` · mismo padding que topband
+- Contenido: BROCANTE · MÚSICA · CINE · TAROT · DISCOS · etc.
+
+### 4. HERO (foto completa sin recorte)
+- Foto: `https://live.staticflickr.com/65535/55250584412_e982256c3d_h.jpg`
+  (Ultramarinos Parroquia 13, letrero verde, mesa brocante)
+- **Texto arriba** en rojo negrita — `.hero-eyebrow-top`:
+  ```
+  Ultramarinos Parroquia 13
+  Doneztebe · Nafarroa
+  Azken Muga of Soul
+  ```
+- **Texto abajo** en blanco — `.hero-title` (Playfair itálica):
+  ```
+  Rituales de CultURa Popular.
+  Ejercicios del Espíritu Beltza.
+  ```
+  (UR en rojo)
+
+### 5. INTRO (fondo azul #82C8E5)
+- Label rojo: `Ejercicios Espirituales de Cultura Popular · Doneztebe · Nafarroa`
+- Cuerpo: texto Vudú-Beat, Xabatenea Etxea, Ritualismo POP, Smart Dress Style
+- Sin columna izquierda, texto a ancho completo
+
+### 6. PHOTO MARQUEE
+- Franjas rojas 7px arriba y abajo
+- Fotos: `clamp(180px,26vw,320px)` de alto
+- `line-height:0` para eliminar línea negra inferior
+- Pausable al clicar
+
+### 7. EVENTS GRID
+- Grid `auto-fill minmax(280px,1fr)` con gap 3px
+- Cada tarjeta: `aspect-ratio: 2/3`, foto con overlay oscuro
+- Hover: escala + oscurece
+- Campos: fecha, título, subtítulo, link "Ver cartel →"
+
+### 8. FOOTER (clon de topband)
+- Misma estructura y tamaño que topband
+- Coords en blanco: `clamp(0.95rem,1.6vw,1.2rem)`
+  `43°07'55"N · 2°01'05"O · Xabatenea Etxea (1538) · C/ Parroquia 13, Doneztebe, Nafarroa`
+
+---
+
+## CSS — Clases principales
+
+| Clase | Uso |
+|---|---|
+| `.topband` | Barra superior navegación |
+| `.brand-slash` | Título principal rojo |
+| `.b-eventos` | Bebas caja negra texto rojo |
+| `.marquee-bar / .marquee-inner` | Marquee texto |
+| `.hero` | Foto completa sin recorte |
+| `.hero-eyebrow-top` | Texto rojo arriba de la foto |
+| `.hero-title` | Título Playfair abajo foto |
+| `.intro` | Sección azul con texto |
+| `.intro-label` | Etiqueta roja intro |
+| `.intro-body` | Cuerpo texto intro |
+| `.photo-marquee` | Marquee de fotos |
+| `.events-section` | Sección grid de carteles |
+| `.event-card` | Tarjeta de cada evento |
+| `.event-card-body` | Contenido inferior tarjeta |
+| `.footer` | Footer clon topband |
+| `.footer-coords` | Coordenadas GPS blancas |
+
+---
+
+## Carteles — Convención de nombres
+```
+nombre-evento-MM-AA.html
+```
+Ejemplo: `rastros-jupiter-05-26.html`
+
+### Carteles existentes
+| Archivo | Evento | Fecha |
+|---|---|---|
+| `rastros-jupiter-05-26.html` | 4º Aniversario Los Rastros de Júpiter | 30 Mayo 2026 |
+
+### Añadir nuevo cartel
+1. Subir el `.html` del cartel al repo 13-EVENTOS con la convención de nombres
+2. Añadir tarjeta en el `.events-grid` del `index.html`
+3. Actualizar el link en el Magic Bus si tiene post
+
+---
+
+## Mobile — Notas
+- Topband: `flex-wrap:wrap` — fluye en varias líneas, mismo tamaño que desktop
+- Brand slash: `flex-wrap:wrap` en móvil desde 700px
+- Events grid: 2 columnas en móvil, 1 en muy pequeño (420px)
+- Hero: foto completa sin recorte, texto arriba y abajo posicionado absolute
+
+---
+
+## Magic Bus — Post Rastros de Júpiter
+- Sección: `data-secciones="musica eventos euskal-herria"`
+- ID: `rastros-4-aniversario`
+- Link cartel: `https://beltzaexperience.github.io/13-EVENTOS/rastros-jupiter-05-26.html`
+- Comentario firmado: **CLAUDIUS · Siglo I d.C. · Vía Láctea, Brazo de Orión**
+- Número: Magic Bus Nº2 · Secundus
+
+---
+
+## Fonema UR — Identidad Visual Beltza
+El fonema **UR** aparece en rojo `#b01a1a` en todo el texto visible. Es una marca de identidad del universo Beltza — presente en todas las webs del ecosistema (Manifiesto, Magic Bus, UR-SAPIENS).
+
+### Implementación
 ```html
-<meta name="viewport" content="width=1100"/>
-```
-Le dice al navegador móvil "este contenido es de 1100px" y él escala solo. Solo funciona en navegadores móviles reales y en el simulador de DevTools (Ctrl+Shift+M). **No funciona redimensionando la ventana del escritorio.**
-
-**2. Orden correcto en el script:**
-`scaleCartel()` debe: resetear → llamar a `fit()` → aplicar transform. Si `fit()` corre después del transform, mide dimensiones ya escaladas y produce valores incorrectos. En móvil real con `viewport=1100`, `scaleCartel()` no aplica ningún transform (el browser ya lo hace), pero en desktop sí actúa.
-
-**Para testear en local:** F12 → icono móvil (Ctrl+Shift+M) → seleccionar iPhone 12 o similar → recargar.
-
----
-
-## Elementos que CAMBIAN por cartel
-
-### 1. Línea de fecha/horario
-```html
-<!-- id="aniversariolinea" -->
-4º ANIVERSARIO · 30/05/26 · 11H TO 20H
+Cult<span style="color:#b01a1a;">ur</span>a
+CULT<span style="color:#b01a1a;">UR</span>ALES
 ```
 
-### 2. Imagen/módulo central
-```html
-<img src="image.jpg" style="display:block; width:100%; height:auto;">
-```
-- Proporción recomendada: ~3:4 (vertical)
-- Sin recorte — se muestra completa como "cuadro en la pared"
+### Aplicar en textos nuevos
+Buscar manualmente: cultura, cultural, culturales, natural, espiritual, Doneztebe (no tiene UR), ritual (no tiene UR), Ultramarinos (ULTR**A**M**AR**INOS — no aplica), UR-SAPIENS (ya tiene UR destacado).
 
-### 3. Línea de artistas
-```html
-<span style="color:#e8ecf4">ARTISTA1 </span>
-<span style="color:#d4900a">· TIPO </span>
-<span style="color:#e8ecf4">ARTISTA2 </span>
-<span style="color:#d4900a">· LIVE</span>
-```
-- Tamaño: `font-size: 70px` — centrado con flexbox
-- Añadir links si procede: `<a href="..." style="color:#e8ecf4; text-decoration:none;">`
-
-### 4. Marquee (franja ámbar)
-```html
-<!-- Editar los <span> dentro del div de animación marqueeScroll -->
-BROCANTE · VERMÚ · MÚSICA · CINE · TAROT · DISCOS · ...
-```
-- Velocidad: `animation: marqueeScroll 28s linear infinite` (reducir segundos = más rápido)
-- El contenido está duplicado dentro del div para el loop continuo
-
----
-
-## Elementos que NO cambian
-- Tipografías y paleta de colores
-- Sistema `scaleX` para justificación de textos (`fit()`)
-- Footer: `BELTZA RECORDS · links`
-- Marquee: estructura y animación
-- Proporciones del lienzo (1100px)
-- Viewport meta `width=1100`
-
----
-
-## Footer (fijo en todos los carteles)
-```
-BELTZA RECORDS · DONOSTIA _ DONEZTEBE · MANIFIESTO · MAGIC BUS · DUB²BEAT · UR-SAPIENS
-```
-Links en `<a href>` — ver sección `#footercontainer` en index.html.
-
----
-
-## Para nuevo cartel
-1. Duplicar el repositorio
-2. Sustituir imagen central (`image.jpg`)
-3. Editar línea fecha/horario (`#aniversariolinea`)
-4. Editar línea artistas
-5. Ajustar marquee si procede
-6. Exportar JPG desde navegador (zoom 100%, captura)
-
----
-
-## CSS nuevo — No hay style.css nuevo
-El `style.css` no cambió. Todo el fix mobile fue en el `<script>` del `index.html`. El CSS base sigue siendo válido para futuros carteles sin modificación.
+### Palabras con UR en el proyecto
+- CULT**UR**A / CULT**UR**ALES — marquee, intro, hero
+- Espirit**u**ales — intro label (u en rojo)
