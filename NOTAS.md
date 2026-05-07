@@ -149,10 +149,10 @@ CULT<span style="color:#b01a1a;">UR</span>ALES
 - Solo tú puedes modificar/borrar (con tu cuenta)
 - Código visible en público — normal, no es riesgo
 
-## CNAME pendiente
+## CNAME ✓ ACTIVO
+- URL definitiva: **https://13rituales.beltzarecords.com/**
 - Archivo `CNAME` en repo: `13rituales.beltzarecords.com`
-- Karlos DNS: CNAME `13rituales` → `beltzaexperience.github.io`
-- GitHub Settings → Pages → Custom domain
+- DNS configurado por Karlos
 
 ## Magic Bus — Post Rastros Mayo 2026
 - Link cartel: `https://beltzaexperience.github.io/13-RITUALES/rastros-jupiter-05-26.html`
